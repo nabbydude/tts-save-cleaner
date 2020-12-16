@@ -13,7 +13,7 @@ interface Args {
   sortContents?: string[];
 }
 
-yargs(process.argv.slice(2)).command(["clean <in-file> <out-file>", "*"], "clean a save file", (yargs) => {
+yargs(process.argv.slice(2)).command(["clean <inFile> <outFile>", "*"], "clean a save file", (yargs) => {
   yargs.positional("inFile", {
     demandOption: true,
     type: "string",
