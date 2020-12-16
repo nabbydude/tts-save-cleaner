@@ -1,19 +1,21 @@
 {
   "name": "tts-save-cleaner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool for cleaning Tabletop Simulator save files.",
   "keywords": [],
   "author": "nabbydude <nabbydude@gmail.com>",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/nabbydude/tts-save-cleaner.git"
+    "type": "git",
+    "url": "https://github.com/nabbydude/tts-save-cleaner.git"
   },
   "bugs": "https://github.com/nabbydude/tts-save-cleaner/issues",
   "homepage": "https://github.com/nabbydude/tts-save-cleaner#readme",
   "main": "index.js",
   "bin": "cli.js",
-  "files": ["*.js"],
+  "files": [
+    "*.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
