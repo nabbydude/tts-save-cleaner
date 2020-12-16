@@ -1,6 +1,6 @@
 {
   "name": "tts-save-cleaner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tool for cleaning Tabletop Simulator save files.",
   "keywords": [],
   "author": "nabbydude <nabbydude@gmail.com>",
