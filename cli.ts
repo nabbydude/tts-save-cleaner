@@ -7,21 +7,20 @@ const { readFile, writeFile } = promises;
 import yargs from "yargs";
 
 interface Args {
-  inFile: string;
-  outFile: string;
+  $0: string;
+  inFile?: string;
+  outFile?: string;
   roundingAccuracy?: number;
   sortContents?: string[];
 }
 
-yargs(process.argv.slice(2)).command(["clean <inFile> <outFile>", "*"], "clean a save file", (yargs) => {
+yargs(process.argv.slice(2)).command(["clean [inFile] [outFile]", "*"], "Clean a save file", (yargs) => {
   yargs.positional("inFile", {
-    demandOption: true,
     type: "string",
     normalize: true,
     description: "The file to be cleaned",
   })
   yargs.positional("outFile", {
-    demandOption: true,
     type: "string",
     normalize: true,
     description: "Where to save the result",
@@ -39,10 +38,19 @@ yargs(process.argv.slice(2)).command(["clean <inFile> <outFile>", "*"], "clean a
   cleanCommand(args).catch(e => console.error(e));
 })
 .help()
+.config()
 .strict()
 .parse()
 
 export async function cleanCommand(args: Args) {
+  if (!args.inFile) {
+    console.error(`Please specify an input filepath\nMore info in ${args.$0} --help`);
+    process.exitCode = 1;
+    return;
+  }
+  if (!args.outFile) {
+    args.outFile = args.inFile;
+  }
   const text = await readFile(args.inFile, "utf8");
 
   const resultText = clean(text, {
